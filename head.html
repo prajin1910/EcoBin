@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoBin - Head</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif; /* Changed font to match public.html */
+            background-color: #f4f4f4; /* Set the background color to match public.html */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navigation bar */
+        nav {
+            background-color: rgba(6, 70, 28, 0.9); /* Changed to match public.html */
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        /* Title */
+        nav h1 {
+            margin: 0;
+            font-size: 2.5em;
+            color: #fff;
+            display: inline-block;
+        }
+
+        /* Back button */
+        .back-button {
+            position: absolute;
+            top: 23px;
+            left: 25px;
+            padding: 8px 16px;
+            background-color: #ffffff;
+            color: rgba(6, 70, 28, 0.9);
+            border: 1px solid rgba(6, 70, 28, 0.9);
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, color 0.3s;
+            width: auto;
+        }
+
+        .back-button:hover {
+            background-color: rgba(6, 70, 28, 0.9);
+            color: #ffffff;
+        }
+
+        /* Main container */
+        main {
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1em;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            background-color: #f8fafa;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2em;
+            background-color: rgba(6, 70, 28, 0.9); /* Changed to match public.html */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .button:hover {
+            background-color: rgba(6, 70, 28, 0.9); /* Changed to match public.html */
+        }
+
+        .statusMessage {
+            padding: 15px;
+            margin-top: 20px;
+            background-color: #e7f5e6;
+            border: 1px solid #c7e1c7;
+            border-radius: 6px;
+            font-size: 1.1em;
+            color: #333;
+            text-align: center;
+        }
+
+        footer {
+            background-color: rgba(6, 70, 28, 0.9); /* Changed to match public.html */
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1em;
+        }
+
+        .attendanceReport {
+            margin-top: 20px;
+            border-top: 1px solid #ccc;
+            padding-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: rgba(6, 70, 28, 0.9); /* Changed to match public.html */
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        #streetName {
+            margin-top: 20px;
+            font-style: italic;
+            color: rgba(6, 70, 28, 0.9); /* Changed to match public.html */
+        }
+
+        .delete-button {
+            background-color: #f44336;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .delete-button:hover {
+            background-color: #c62828;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <button class="back-button" onclick="window.history.back()">Back</button>
+        <h1>EcoBin - Head</h1>
+    </nav>
+
+    <main>
+        <h2>Schedule Pickup</h2>
+        <label for="districtPickup">Select District:</label>
+        <select id="districtPickup">
+            <option value="">Select a District</option>
+            <option value="Ariyalur">Ariyalur</option>
+            <option value="Chennai">Chennai</option>
+            <option value="Chengalpattu">Chengalpattu</option>
+            <option value="Coimbatore">Coimbatore</option>
+            <option value="Cuddalore">Cuddalore</option>
+            <option value="Dharmapuri">Dharmapuri</option>
+            <option value="Dindigul">Dindigul</option>
+            <option value="Erode">Erode</option>
+            <option value="Kanchipuram">Kanchipuram</option>
+            <option value="Kanyakumari">Kanyakumari</option>
+            <option value="Karur">Karur</option>
+            <option value="Krishnagiri">Krishnagiri</option>
+            <option value="Madurai">Madurai</option>
+            <option value="Nagapattinam">Nagapattinam</option>
+            <option value="Namakkal">Namakkal</option>
+            <option value="Nilgiris">Nilgiris</option>
+            <option value="Perambalur">Perambalur</option>
+            <option value="Pudukkottai">Pudukkottai</option>
+            <option value="Ramanathapuram">Ramanathapuram</option>
+            <option value="Salem">Salem</option>
+            <option value="Sivagangai">Sivagangai</option>
+            <option value="Thanjavur">Thanjavur</option>
+            <option value="Theni">Theni</option>
+            <option value="Thiruvallur">Thiruvallur</option>
+            <option value="Thiruvannamalai">Thiruvannamalai</option>
+            <option value="Tirunelveli">Tirunelveli</option>
+            <option value="Tiruppur">Tiruppur</option>
+            <option value="Tiruchirappalli">Tiruchirappalli</option>
+            <option value="Vellore">Vellore</option>
+            <option value="Villupuram">Villupuram</option>
+            <option value="Virudhunagar">Virudhunagar</option>
+        </select>
+
+        <label for="areaPickup">Select Area:</label>
+        <select id="areaPickup">
+            <option value="Area 1">Area 1</option>
+            <option value="Area 2">Area 2</option>
+            <option value="Area 3">Area 3</option>
+        </select>
+
+        <label for="pickupDate">Select Pickup Date:</label>
+        <input type="date" id="pickupDate" />
+
+        <button id="schedulePickup" class="button">Schedule Pickup</button>
+        <div id="pickupMessage" class="statusMessage"></div>
+
+        <h2>Waste Disposal Input</h2>
+        <label for="districtDisposal">Select District:</label>
+        <select id="districtDisposal">
+            <option value="">Enter District</option>
+                    <option value="Ariyalur">Ariyalur</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Chengalpattu">Chengalpattu</option>
+                    <option value="Coimbatore">Coimbatore</option>
+                    <option value="Cuddalore">Cuddalore</option>
+                    <option value="Dharmapuri">Dharmapuri</option>
+                    <option value="Dindigul">Dindigul</option>
+                    <option value="Erode">Erode</option>
+                    <option value="Kanchipuram">Kanchipuram</option>
+                    <option value="Kanyakumari">Kanyakumari</option>
+                    <option value="Karur">Karur</option>
+                    <option value="Krishnagiri">Krishnagiri</option>
+                    <option value="Madurai">Madurai</option>
+                    <option value="Nagapattinam">Nagapattinam</option>
+                    <option value="Namakkal">Namakkal</option>
+                    <option value="Nilgiris">Nilgiris</option>
+                    <option value="Perambalur">Perambalur</option>
+                    <option value="Pudukkottai">Pudukkottai</option>
+                    <option value="Ramanathapuram">Ramanathapuram</option>
+                    <option value="Salem">Salem</option>
+                    <option value="Sivagangai">Sivagangai</option>
+                    <option value="Thanjavur">Thanjavur</option>
+                    <option value="Theni">Theni</option>
+                    <option value="Thiruvallur">Thiruvallur</option>
+                    <option value="Thiruvannamalai">Thiruvannamalai</option>
+                    <option value="Tirunelveli">Tirunelveli</option>
+                    <option value="Tiruppur">Tiruppur</option>
+                    <option value="Tiruchirappalli">Tiruchirappalli</option>
+                    <option value="Vellore">Vellore</option>
+                    <option value="Villupuram">Villupuram</option>
+                    <option value="Virudhunagar">Virudhunagar</option>
+            <!-- Other district options -->
+        </select>
+
+        <label for="areaDisposal">Select Area:</label>
+        <select id="areaDisposal">
+            <option value="">Enter Area</option>
+            <option value="Area1">Area 1</option>
+            <option value="Area2">Area 2</option>
+            <option value="Area3">Area 3</option>
+        </select>
+
+        <label for="statusDisposal">Select Waste Disposal Status:</label>
+        <select id="statusDisposal">
+            <option value="">Enter Status</option>
+            <option value="Decomposed">Decomposed</option>
+            <option value="Not Decomposed">Not Decomposed</option>
+        </select>
+
+        <button id="submitStatus" class="button">Submit Status</button>
+        <div id="statusMessage" class="statusMessage"></div>
+        
+        <h2>Attendance Report</h2>
+        <div id="attendanceReport" class="attendanceReport"></div>
+
+        <div id="streetName"></div> <!-- For displaying the last registered street -->
+    </main>
+
+    <footer>
+        <p>&copy; 2024 EcoBin - Smart Waste Management System</p>
+    </footer>
+
+    <script>
+        
+document.getElementById('schedulePickup').addEventListener('click', function () {
+    const district = document.getElementById('districtPickup').value; // Changed here
+    const area = document.getElementById('areaPickup').value; // Changed here
+    const pickupDate = document.getElementById('pickupDate').value;
+    const pickupMessage = document.getElementById('pickupMessage');
+
+    if (district && area && pickupDate) {
+        let pickupInfo = JSON.parse(localStorage.getItem('pickupInfo')) || {};
+        if (!pickupInfo[district]) {
+            pickupInfo[district] = {};
+        }
+        pickupInfo[district][area] = pickupDate;
+        localStorage.setItem('pickupInfo', JSON.stringify(pickupInfo));
+        pickupMessage.innerText = `Pickup scheduled for ${district}, ${area} on ${pickupDate}!`;
+        speak(`Pickup scheduled for ${district}, ${area} on ${pickupDate}!`); // Speak the confirmation
+    } else {
+        pickupMessage.innerText = "Please fill in all fields.";
+        speak("Please fill in all fields."); // Speak the error message
+    }
+});
+
+document.getElementById('submitStatus').addEventListener('click', function () {
+    const district = document.getElementById('districtDisposal').value; // Changed here
+    const area = document.getElementById('areaDisposal').value; // Changed here
+    const status = document.getElementById('statusDisposal').value; // Changed here
+    const statusMessage = document.getElementById('statusMessage');
+
+    if (district && area && status) {
+        let disposalInfo = JSON.parse(localStorage.getItem('disposalInfo')) || {};
+        if (!disposalInfo[district]) {
+            disposalInfo[district] = {};
+        }
+        disposalInfo[district][area] = status;
+        localStorage.setItem('disposalInfo', JSON.stringify(disposalInfo));
+        statusMessage.innerText = `Status for ${district} in ${area} updated successfully!`;
+        speak(`Status for ${district} in ${area} updated successfully!`); // Speak the confirmation
+    } else {
+        statusMessage.innerText = "Please fill in all fields.";
+        speak("Please fill in all fields."); 
+    }
+});
+function displayAttendanceRecords() {
+    const attendanceRecords = JSON.parse(localStorage.getItem('attendanceRecords')) || [];
+    const attendanceReportDiv = document.getElementById('attendanceReport');
+    attendanceReportDiv.innerHTML = '';
+
+    if (attendanceRecords.length > 0) {
+        const table = document.createElement('table');
+        const thead = document.createElement('thead');
+        const tbody = document.createElement('tbody');
+
+        const headerRow = document.createElement('tr');
+        const headers = ['Name', 'District', 'Street', 'Date', 'Actions'];
+        headers.forEach(headerText => {
+            const header = document.createElement('th');
+            header.innerText = headerText;
+            headerRow.appendChild(header);
+        });
+        thead.appendChild(headerRow);
+        attendanceRecords.forEach((record, index) => {
+            const row = document.createElement('tr');
+            const fields = ['name', 'district', 'street', 'date'];
+            fields.forEach(field => {
+                const cell = document.createElement('td');
+                cell.innerText = record[field] || 'N/A'; // If field is missing, show 'N/A'
+                row.appendChild(cell);
+            });
+            const actionCell = document.createElement('td');
+            const deleteButton = document.createElement('button');
+            deleteButton.innerText = 'Delete';
+            deleteButton.classList.add('delete-button');
+            deleteButton.addEventListener('click', function () {
+                deleteAttendanceRecord(index);
+            });
+            actionCell.appendChild(deleteButton);
+            row.appendChild(actionCell);
+
+            tbody.appendChild(row);
+        });
+        table.appendChild(thead);
+        table.appendChild(tbody);
+        attendanceReportDiv.appendChild(table);
+    } else {
+        attendanceReportDiv.innerText = "No attendance records available.";
+    }
+}
+function deleteAttendanceRecord(index) {
+    const attendanceRecords = JSON.parse(localStorage.getItem('attendanceRecords')) || [];
+    attendanceRecords.splice(index, 1);
+    localStorage.setItem('attendanceRecords', JSON.stringify(attendanceRecords));
+    displayAttendanceRecords();
+}
+function speak(text) {
+    const msg = new SpeechSynthesisUtterance(text);
+    msg.voice = speechSynthesis.getVoices().find(voice => voice.name.includes('Female')) || speechSynthesis.getVoices()[0];
+    window.speechSynthesis.speak(msg);
+}
+displayAttendanceRecords();
+    </script>
+</body>
+</html>

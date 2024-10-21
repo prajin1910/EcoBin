@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoBin - Admin</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background-color: rgba(6, 70, 28, 0.9);
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        nav h1 {
+            margin: 0;
+            font-size: 2.5em;
+            color: #fff;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+        /* Existing styles... */
+    
+    .green-button {
+        background-color: rgba(6, 70, 28, 0.9); /* Green background */
+        color: white; /* White text */
+        border: none; /* Remove border */
+    }
+
+    /* Optionally, add hover effects for the green button */
+    .green-button:hover {
+        background-color: rgba(6, 70, 28, 0.9); /* Darker green on hover */
+    }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        select,
+        button {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1em;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+        .back-button {
+        position: absolute;
+        top: 23px; /* Adjusts distance from top */
+        left: 25px; /* Adjusts distance from left edge */
+        padding: 8px 16px; /* Size of the button (smaller rectangle) */
+        background-color: #ffffff;
+        color: rgba(6, 70, 28, 0.9);
+        border: 1px solid rgba(6, 70, 28, 0.9);
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1em; /* Font size */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Shadow effect */
+        transition: background-color 0.3s, color 0.3s;
+        width: auto; /* Prevent full-width expansion */
+    }
+
+    /* Hover effect for the back button */
+    .back-button:hover {
+        background-color: rgba(6, 70, 28, 0.9);
+        color: #ffffff;
+    }
+
+        .statusMessage {
+            padding: 15px;
+            margin-top: 20px;
+            background-color: #e7f5e6;
+            border: 1px solid #c7e1c7;
+            border-radius: 6px;
+            font-size: 1.1em;
+            color: #333;
+        }
+
+        .table-container {
+            margin-top: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        th,
+        td {
+            padding: 16px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: rgba(6, 70, 28, 0.9);
+            color: white;
+        }
+
+        td {
+            color: #333;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(6, 70, 28, 0.9);
+            color: white;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .chart-container {
+            width: 40%;
+            float: right;
+            margin-right: 30px;
+        }
+
+        .chart-summary {
+    width: 50%;
+    float: left;
+    padding-right: 30px;
+    font-size: 1.2em;
+    color: #333;
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically if needed */
+    text-align: center; /* Center the text */
+    margin-top: 120px; /* Push down from the top */
+}
+
+
+
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <h1>EcoBin - Admin</h1>
+        <button onclick="window.history.back()" class="back-button">
+            Back
+        </button>
+        
+    </nav>
+
+    <main class="container">
+        <div class="section">
+            <h2>Waste Disposal Status</h2>
+            <div class="form-group">
+                <label for="districtSelect">Select District:</label>
+                <select id="districtSelect">
+                    <option value="">Select a District</option>
+                    <option value="Ariyalur">Ariyalur</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Chengalpattu">Chengalpattu</option>
+                    <option value="Coimbatore">Coimbatore</option>
+                    <option value="Cuddalore">Cuddalore</option>
+                    <option value="Dharmapuri">Dharmapuri</option>
+                    <option value="Dindigul">Dindigul</option>
+                    <option value="Erode">Erode</option>
+                    <option value="Kanchipuram">Kanchipuram</option>
+                    <option value="Kanyakumari">Kanyakumari</option>
+                    <option value="Karur">Karur</option>
+                    <option value="Krishnagiri">Krishnagiri</option>
+                    <option value="Madurai">Madurai</option>
+                    <option value="Nagapattinam">Nagapattinam</option>
+                    <option value="Namakkal">Namakkal</option>
+                    <option value="Nilgiris">Nilgiris</option>
+                    <option value="Perambalur">Perambalur</option>
+                    <option value="Pudukkottai">Pudukkottai</option>
+                    <option value="Ramanathapuram">Ramanathapuram</option>
+                    <option value="Salem">Salem</option>
+                    <option value="Sivagangai">Sivagangai</option>
+                    <option value="Thanjavur">Thanjavur</option>
+                    <option value="Theni">Theni</option>
+                    <option value="Thiruvallur">Thiruvallur</option>
+                    <option value="Thiruvannamalai">Thiruvannamalai</option>
+                    <option value="Tirunelveli">Tirunelveli</option>
+                    <option value="Tiruppur">Tiruppur</option>
+                    <option value="Tiruchirappalli">Tiruchirappalli</option>
+                    <option value="Vellore">Vellore</option>
+                    <option value="Villupuram">Villupuram</option>
+                    <option value="Virudhunagar">Virudhunagar</option>
+                    <!-- Other district options... -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="areaSelect">Select Area:</label>
+                <select id="areaSelect">
+                    <option value="">Select an Area</option>
+                    <option value="Area1">Area 1</option>
+                    <option value="Area2">Area 2</option>
+
+                    <!-- Other area options... -->
+                </select>
+            </div>
+            <button id="checkStatus" class="button green-button">Check Disposal Status</button>
+            <div id="wasteStatus" class="statusMessage"></div>
+        </div>
+
+        <div class="section">
+            <h2>Driver Attendance</h2>
+            <button id="viewAttendance" class="button green-button">View Attendance</button>
+            <div id="attendanceStatus" class="statusMessage"></div>
+        </div>
+
+        <div class="section">
+            <h2>Public Feedback</h2>
+            <button id="viewFeedback" class="button green-button">View Feedback</button>
+            <div id="feedbackStatus" class="statusMessage">
+                <table id="feedbackTable" class="feedbackTable"></table>
+            </div>
+        </div>
+        <div class="section clearfix">
+            <h2>District Waste Disposal Report</h2>
+            <div class="chart-summary" id="chartSummary"></div> <!-- Chart summary section -->
+            <div class="chart-container">
+                <canvas id="districtWasteChart"></canvas>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 EcoBin - Smart Waste Management System</p>
+    </footer>
+
+    <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        // Function to draw the pie chart
+        function drawPieChart(decomposedCount, notDecomposedCount, unupdatedCount) {
+            const ctx = document.getElementById('districtWasteChart').getContext('2d');
+            const data = {
+                labels: ['Decomposed', 'Not Decomposed', 'Unupdated'],
+                datasets: [{
+                    data: [decomposedCount, notDecomposedCount, unupdatedCount],
+                    backgroundColor: ['#4CAF50', '#FF6347', '#A9A9A9'],
+                    hoverOffset: 4
+                }]
+            };
+
+            new Chart(ctx, {
+                type: 'pie',
+                data: data
+            });
+        }
+
+        // Function to display the chart summary
+        function displayChartSummary(decomposedCount, notDecomposedCount, unupdatedCount) {
+            const summaryText = `Waste Management Overview:
+            \n• ${decomposedCount} district(s) have successfully decomposed waste.
+            \n• ${notDecomposedCount} district(s) have not decomposed waste yet.
+            \n• Data for ${unupdatedCount} district(s) has not been updated.`;
+            document.getElementById('chartSummary').innerText = summaryText;
+        }
+
+        // Fetch waste data from local storage and update chart
+        function updateDistrictChart() {
+            const disposalInfo = JSON.parse(localStorage.getItem('disposalInfo')) || {};
+            const totalDistricts = 32;
+
+            let decomposedCount = 0;
+            let notDecomposedCount = 0;
+            let unupdatedCount = totalDistricts;
+
+            // Iterate through each district in the disposalInfo
+            for (const district in disposalInfo) {
+                let areas = disposalInfo[district];
+
+                if (areas) {
+                    let districtStatus = Object.values(areas).includes("Decomposed") ? "Decomposed" : "Not Decomposed";
+
+                    if (districtStatus === "Decomposed") {
+                        decomposedCount++;
+                    } else {
+                        notDecomposedCount++;
+                    }
+
+                    unupdatedCount--; // Decrease unupdated count
+                }
+            }
+
+            drawPieChart(decomposedCount, notDecomposedCount, unupdatedCount);
+            displayChartSummary(decomposedCount, notDecomposedCount, unupdatedCount);
+        }
+
+        // Initialize chart on page load
+        window.onload = function () {
+            updateDistrictChart();
+        };
+
+        // Your existing code for checking waste status and other features...
+        // Function to speak text in a female voice
+    function speak(text) {
+        const synth = window.speechSynthesis;
+        const utterance = new SpeechSynthesisUtterance(text);
+        
+        // Choose a female voice from available voices
+        const voices = synth.getVoices();
+        const selectedVoice = voices.find(voice => voice.name.includes('Female') || voice.gender === 'female') || voices[0];
+
+        // Set the selected voice
+        utterance.voice = selectedVoice;
+        utterance.rate = 1; // Adjust the speed (1 is normal speed)
+        utterance.pitch = 1; // Adjust the pitch (1 is default)
+
+        // Speak the utterance
+        synth.speak(utterance);
+    }
+
+    document.getElementById('checkStatus').addEventListener('click', function () {
+        const district = document.getElementById('districtSelect').value.trim();
+        const area = document.getElementById('areaSelect').value.trim();
+        const wasteStatus = document.getElementById('wasteStatus');
+
+        if (district && area) {
+            const disposalInfo = JSON.parse(localStorage.getItem('disposalInfo')) || {};
+            const status = disposalInfo[district]?.[area];
+
+            if (status) {
+                const message = `Status for ${area}, ${district}: ${status}`;
+                wasteStatus.innerText = message;
+                speak(message); // Speak in female voice
+            } else {
+                const message = "Status not found for the selected area.";
+                wasteStatus.innerText = message;
+                speak(message); // Speak in female voice
+            }
+        } else {
+            const message = "Please select both district and area.";
+            wasteStatus.innerText = message;
+            speak(message); // Speak in female voice
+        }
+    });
+
+    document.getElementById('viewAttendance').addEventListener('click', function () {
+        const attendanceRecords = JSON.parse(localStorage.getItem('attendanceRecords')) || [];
+        const attendanceStatus = document.getElementById('attendanceStatus');
+
+        if (attendanceRecords.length > 0) {
+            let attendanceList = 'Here are the driver attendance records.';
+            attendanceList += ' <table class="feedbackTable"><tr><th>Name</th><th>Date</th><th>Street</th><th>District</th><th>Location</th><th>Action</th></tr>';
+            attendanceRecords.forEach((record, index) => {
+                let locationButton = record.location 
+                    ? `<button class="viewLocationButton green-button" data-lat="${record.location.latitude}" data-lng="${record.location.longitude}">View Location</button>`
+                    : 'Location not available';
+
+                attendanceList += `
+                <tr>
+                    <td>${record.name}</td>
+                    <td>${record.date}</td>
+                    <td>${record.street}</td>
+                    <td>${record.district}</td>
+                    <td>${locationButton}</td>
+                    <td><button class="deleteButton green-button" data-index="${index}">Delete</button></td>
+                </tr>`;
+            });
+            attendanceList += '</table>';
+            attendanceStatus.innerHTML = attendanceList;
+            speak("Driver attendance records have been displayed."); // Speak in female voice
+
+            // Add delete functionality
+            const deleteButtons = document.querySelectorAll('.deleteButton');
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const index = this.getAttribute('data-index');
+                    deleteAttendanceRecord(index);
+                });
+            });
+
+            // Add view location functionality
+            const viewLocationButtons = document.querySelectorAll('.viewLocationButton');
+            viewLocationButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const lat = this.getAttribute('data-lat');
+                    const lng = this.getAttribute('data-lng');
+                    // Open the location in a new tab using Google Maps
+                    window.open(`https://www.google.com/maps?q=${lat},${lng}`, '_blank');
+                });
+            });
+        } else {
+            attendanceStatus.innerText = 'No attendance records found.';
+            speak(attendanceStatus.innerText); // Speak in female voice
+        }
+    });
+
+    document.getElementById('viewFeedback').addEventListener('click', function () {
+        const feedbackRecords = JSON.parse(localStorage.getItem('feedbackRecords')) || [];
+        const feedbackTable = document.getElementById('feedbackTable');
+
+        if (feedbackRecords.length > 0) {
+            let feedbackList = '<tr><th>Name</th><th>Feedback</th><th>Action</th></tr>';
+            feedbackRecords.forEach((record, index) => {
+                feedbackList += `
+                <tr>
+                    <td>${record.name}</td>
+                    <td>${record.feedback}</td>
+                    <td><button class="deleteFeedbackButton green-button" data-index="${index}">Delete</button></td>
+                </tr>`;
+            });
+            feedbackTable.innerHTML = feedbackList;
+            speak("Public feedback records have been displayed."); // Speak in female voice
+
+            // Add delete functionality for feedback
+            const deleteFeedbackButtons = document.querySelectorAll('.deleteFeedbackButton');
+            deleteFeedbackButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const index = this.getAttribute('data-index');
+                    deleteFeedbackRecord(index);
+                });
+            });
+        } else {
+            feedbackTable.innerHTML = '<tr><td colspan="3">No feedback records found.</td></tr>';
+            speak("No feedback records found."); // Speak in female voice
+        }
+    });
+
+    function deleteAttendanceRecord(index) {
+        let attendanceRecords = JSON.parse(localStorage.getItem('attendanceRecords')) || [];
+        attendanceRecords.splice(index, 1); // Remove the record at the given index
+        localStorage.setItem('attendanceRecords', JSON.stringify(attendanceRecords)); // Update localStorage
+        document.getElementById('viewAttendance').click(); // Refresh the attendance view
+    }
+
+    function deleteFeedbackRecord(index) {
+        let feedbackRecords = JSON.parse(localStorage.getItem('feedbackRecords')) || [];
+        feedbackRecords.splice(index, 1); // Remove the record at the given index
+        localStorage.setItem('feedbackRecords', JSON.stringify(feedbackRecords)); // Update localStorage
+        document.getElementById('viewFeedback').click(); // Refresh the feedback view
+    }
+    </script>
+</body>
+
+</html>
